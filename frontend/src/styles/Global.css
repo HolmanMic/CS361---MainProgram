@@ -1,7 +1,19 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  min-height: 100vh;
+  position: relative;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,0.75),
+      rgba(255,255,255,0.75)
+    ),
+    url("../assets/Designer.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 nav {
@@ -51,12 +63,11 @@ input {
 }
 
 .card {
-    background-color: white;
-    border-radius: 12px;
-    padding: 20px;
-    margin-top: 20px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    border: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  padding: 20px;
+
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
 .card h3 {
@@ -66,6 +77,13 @@ input {
 
 .card p {
     margin: 8px 0;
+}
+
+.card img {
+    max-width: 200px;
+    border-radius: 8px;
+    display: block;
+    margin-bottom: 15px;
 }
 
 .page-container {
@@ -78,9 +96,27 @@ input {
     margin-bottom: 20px;
 }
 
+select {
+padding: 8px;
+margin: 5px;
+border: 1px solid #ccc;
+border-radius: 6px;
+}
 
+.flag-container {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e6e6e6;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.2);
+}
 
-
+.flag-image {
+    width: 240px;
+    display: block;
+}
 
 ul {
     list-style-type: none;

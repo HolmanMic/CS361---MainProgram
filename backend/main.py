@@ -1,5 +1,3 @@
-print("I AM IN MAIN.PY")
-
 from flask import Flask
 from flask_cors import CORS
 

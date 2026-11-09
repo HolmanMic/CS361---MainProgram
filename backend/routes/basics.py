@@ -8,6 +8,7 @@ basics_bp = Blueprint(
 )
 
 @basics_bp.route("")
+@basics_bp.route("/")
 def basics():
 
     country = request.args.get("country")

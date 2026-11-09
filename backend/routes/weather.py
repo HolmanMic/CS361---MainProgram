@@ -26,7 +26,8 @@ def weather():
 
     city = request.args.get("city")
     month = request.args.get("month")
+    country = request.args.get("country")
 
-    data = get_weather(city, month)
+    data = get_weather(city, month, country)
 
     return jsonify(data)

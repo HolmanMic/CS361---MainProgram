@@ -1,6 +1,14 @@
 function BasicsCard({ basics }) {
   return (
     <div className="card">
+      <div className="flag-container">
+        <img
+          src={basics.flag}
+          alt={`${basics.country} flag`}
+          className="flag-image"
+        />
+      </div>
+
       <h3>{basics.country}</h3>
 
       <p>Capital: {basics.capital}</p>
