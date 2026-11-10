@@ -6,6 +6,7 @@ def get_weather(city, month, country):
     geo_url = (
         "https://geocoding-api.open-meteo.com/v1/search"
     )
+    print("GEO URL:", geo_url)
     geo_response = requests.get(
         geo_url,
         params={

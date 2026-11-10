@@ -13,11 +13,11 @@ export const getWeather = async (city, month) => {
   return response.data;
 };
 
-export const getActivities = async (city, category) => {
+export const getActivities = async (city, country, category) => {
   const response = await axios.get(
     `${API}/activities`,
     {
-      params: { city, category },
+      params: { city, country, category },
     }
   );
 

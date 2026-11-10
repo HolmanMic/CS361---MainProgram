@@ -13,6 +13,7 @@ activities_bp = Blueprint(
     "activities",
     __name__,
     url_prefix="/api/activities"
+
 )
 
 @activities_bp.route("")
@@ -20,8 +21,9 @@ activities_bp = Blueprint(
 def activities():
 
     city = request.args.get("city")
+    country = request.args.get("country")
     category = request.args.get("category")
 
-    data = get_activities(city, category)
+    data = get_activities(city, country, category)
 
     return jsonify(data)

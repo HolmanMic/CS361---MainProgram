@@ -7,7 +7,11 @@ function ActivityCard({ activities }) {
 
       <ul>
         {activities.results.map((activity, index) => (
-          <li key={index}>{activity}</li>
+          <li key={index}>
+            <strong>{activity.name}</strong>
+            <br />
+            {activity.address}
+          </li>
         ))}
       </ul>
     </div>

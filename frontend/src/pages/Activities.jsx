@@ -7,18 +7,21 @@ import '../styles/Activities.css';
 
 function Activities() {
   const [city, setCity] = useState("");
+  const [country, setCountry] = useState("");
   const [category, setCategory] = useState("");
   const [activities, setActivities] = useState(null);
 
+
   const handleSearch = async () => {
-    if (!city || !category) {
-      alert("Please enter a city and category.");
+    if (!city || !country || !category) {
+      alert("Please enter a city, country, and category.");
       return;
     }
 
     try {
       const data = await getActivities(
         city,
+        country,
         category
       );
 
@@ -40,16 +43,28 @@ function Activities() {
         onChange={(e) =>
           setCity(e.target.value)
         }
-      />
+      />  
 
       <input
         type="text"
-        placeholder="Category"
-        value={category}
+        placeholder="Country"
+        value={country}
         onChange={(e) =>
-          setCategory(e.target.value)
+          setCountry(e.target.value)
         }
       />
+
+      <select
+        value={category}
+        onChange={(e) => setCategory(e.target.value)}
+      >
+        <option value="">Select Category</option>
+        <option value="tourism.sights">Tourist Attractions</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="entertainment.museum">Museums</option>
+        <option value="leisure.park">Parks</option>
+        <option value="catering.restaurant">Restaurants</option>
+      </select>
 
       <button onClick={handleSearch}>
         Search
