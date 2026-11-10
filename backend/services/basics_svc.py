@@ -1,6 +1,6 @@
 import requests
+from routes.config import REST_COUNTRIES_API_KEY
 
-API_KEY = "rc_live_69b2dbee9250453098b76273c2b9bed7"
 
 def get_country_info(country):
 
@@ -11,7 +11,7 @@ def get_country_info(country):
     response = requests.get(
         url,
         headers={
-            "Authorization": f"Bearer {API_KEY}"
+            "Authorization": f"Bearer {REST_COUNTRIES_API_KEY}"
         }
     )
 

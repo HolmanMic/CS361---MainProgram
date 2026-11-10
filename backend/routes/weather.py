@@ -1,15 +1,5 @@
 # Weather
 
-"""Open-Meteo
-
-Provides:
-
-Historical weather
-Monthly averages
-Rain days
-Temperature data
-
-Free and no database required."""
 
 from flask import Blueprint, request, jsonify
 from services.weather_svc import get_weather

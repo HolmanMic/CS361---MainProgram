@@ -1,6 +1,7 @@
 import requests
+from routes.config import GEOAPIFY_API_KEY
 
-API_KEY = "47ebdedd64a74a1c99cbda7ea6396966"
+
 
 def get_activities(city, country, category):
 
@@ -31,7 +32,7 @@ def get_activities(city, country, category):
             "categories": category,
             "filter": f"circle:{longitude},{latitude},5000",
             "limit": 10,
-            "apiKey": API_KEY
+            "apiKey": GEOAPIFY_API_KEY
 }
     )
 

@@ -4,11 +4,11 @@ import '../styles/Home.css';
 function Home() {
   return (
     <div className="home-container">
-      <h1>The Wondering Wonderer</h1>
+      <h1>The Wandering Wonderer</h1>
       <h2>Plan Your Trip</h2>
 
       <p>
-        Welcome to The Wondering Wonderer!
+        Welcome to The Wandering Wonderer!
       </p>
 
       <p>
