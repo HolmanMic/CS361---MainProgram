@@ -4,7 +4,7 @@ function NavBar() {
   return (
     <nav>
       <span className="logo">
-        The Wandering Wonderer
+        Discover Adventures
       </span>
 
       <Link to="/">Home</Link>

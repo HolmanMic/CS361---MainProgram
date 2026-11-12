@@ -18,6 +18,10 @@ def get_weather(city, month, country):
     )
     geo_data = geo_response.json()
     location = geo_data.get("results", [])[0] if geo_data.get("results") else None
+    if not location:
+        return {
+            "error": "City not found. Please check spelling and try again."
+        }
 
     latitude = location.get("latitude") if location else None
     longitude = location.get("longitude") if location else None

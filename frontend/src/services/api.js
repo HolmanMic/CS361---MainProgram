@@ -2,11 +2,11 @@ import axios from "axios";
 
 const API = "http://127.0.0.1:5000/api";
 
-export const getWeather = async (city, month) => {
+export const getWeather = async (city, country, month) => {
   const response = await axios.get(
     `${API}/weather`,
     {
-      params: { city, month },
+      params: { city, country, month },
     }
   );
 
@@ -34,3 +34,52 @@ export const getBasics = async (country) => {
 
   return response.data;
 };
+
+export async function addFavorite(city, country) {
+
+  const response = await fetch(
+    `${API}/favorites/`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        city,
+        country
+      })
+    }
+  );
+
+  return response.json();
+}
+
+export async function removeFavorite(city, country) {
+  const response = await fetch(
+    `${API}/favorites/`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        city,
+        country
+      })
+    }
+  );
+
+  return response.json();
+}
+
+export async function getFavorites() {
+  const response = await fetch(
+    `${API}/favorites/`,
+    {
+      method: "GET",
+    }
+  );
+
+  return response.json();
+}
+

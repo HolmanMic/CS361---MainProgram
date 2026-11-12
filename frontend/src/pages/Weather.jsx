@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { getWeather } from "../services/api";
+import { getWeather, addFavorite, removeFavorite, getFavorites } from "../services/api";
 import WeatherCard from "../components/WeatherCard";
 import '../styles/Global.css';
 import '../styles/Weather.css';
@@ -10,6 +10,7 @@ function Weather() {
   const [month, setMonth] = useState("");
   const [country, setCountry] = useState("");
   const [weather, setWeather] = useState(null);
+  const [favorites, setFavorites] = useState([]);
 
 
   const handleSearch = async () => {
@@ -20,18 +21,63 @@ function Weather() {
     }
 
     try {
-      const data = await getWeather(city, month, country);
+      const data = await getWeather(city, country, month);
+      if (data.error) {
+        alert(data.error);
+        setWeather(null);
+        return;
+      }
+
       setWeather(data);
     } catch (error) {
       console.error(error);
     }
   };
 
+    async function saveFavorite() {
+      try {
+        const data = await addFavorite(
+          weather.city, weather.country);
+        setFavorites(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function deleteFavorite(city, country) {
+      try {
+        const data = await removeFavorite(city, country);
+        setFavorites(data);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function fetchFavorites() {
+      try {
+        const data = await getFavorites();
+        setFavorites(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    useEffect(() => {
+      fetchFavorites();
+    }, []);
+
   return (
     <div className="page-container">
       <h2>Weather Information</h2>
+      <p className="weather-instruction">
+        Enter a city, country, and month to view historical weather information.
+      </p>
+      <p className="weather-disclaimer">
+        Note: Weather information is based on historical data and may not reflect current or future conditions.
+      </p>
 
       <div className="search-section">
+
       <input
         type="text"
         placeholder="Enter city"
@@ -71,8 +117,38 @@ function Weather() {
       </div>
 
       {weather && <WeatherCard weather={weather} />}
+
+      {weather && (
+        <button onClick={saveFavorite}>
+        Add to Favorites
+      </button>
+      )}
+
+      <div className="favorites-section">
+        <h3>Favorites</h3>
+
+        <ul>
+          {favorites.map((favorite, index) => (
+            <li key={index}>
+              {favorite.city}, {favorite.country}
+
+              <button className="remove-button"
+                onClick={() =>
+                  deleteFavorite(
+                    favorite.city,
+                    favorite.country
+                  )
+                }
+              >
+                Remove
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
+
 
 export default Weather;
